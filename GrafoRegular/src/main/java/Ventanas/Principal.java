@@ -20,6 +20,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         verticesbox();
         aristasbox();
+        this.setLocationRelativeTo(null);
     }
     
     public Principal(int nulo){
@@ -99,7 +100,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBox2, 0, 68, Short.MAX_VALUE)
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +113,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(Generar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
         );
@@ -124,6 +125,14 @@ public class Principal extends javax.swing.JFrame {
         this.vertices = Integer.parseInt(this.jComboBox1.getSelectedItem().toString());
         this.aristas = Integer.parseInt(this.jComboBox2.getSelectedItem().toString());
         Logica logica = new Logica(this.vertices,this.aristas);
+        try{
+            Thread.sleep(500);
+            Grafo gf = new Grafo();
+            gf.setVisible(true);
+            gf.setLocationRelativeTo(null);
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_GenerarActionPerformed
 
     /**

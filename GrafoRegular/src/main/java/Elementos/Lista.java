@@ -98,7 +98,8 @@ public class Lista {
         return grado;
     }
     public String Cadena(){
-        String cadena = "graph Visual{\n";
+        String cadena = "graph neato{\n";
+        cadena += "edge [style=\"solid\", color=\"blue\"];";
         Nodo aux = this.cabeza;
         while(aux != null){
             cadena += "\""+aux.datos.getNumero()+"\";\n";

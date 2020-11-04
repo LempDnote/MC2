@@ -1,5 +1,9 @@
 package Elementos;
 import Ventanas.Principal;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.Random;
 
 public class Logica {
@@ -47,7 +51,15 @@ public class Logica {
                 this.lista.Modificar(g2,"grado",+1);
             }
         }
-        System.out.println(cadena());
+        Fichero();
+        EjecutarDot();
+//        try{
+//            Thread.sleep(1000);
+//        }catch(Exception e){
+//            System.out.println(e);
+//        }
+        
+        
     }
     private String cadena(){
         String cadena = "";
@@ -55,6 +67,42 @@ public class Logica {
         cadena += this.listaa.Cadena();
         return cadena;
     }
-    
-    
+    private void Fichero(){
+        try{
+            PrintWriter pw = new PrintWriter("C:/Users/Eduardo/Desktop/MC2/Grafo/grafo.txt","UTF-8");
+            pw.write(cadena());
+            pw.close();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    private void EjecutarDot(){
+        try{
+            String cmd [] = new String[5];
+            cmd[0] = "C:/Program Files (x86)/Graphviz2.38/bin/dot.exe";
+            cmd[1] = "-Tpng";
+            cmd[2] = "C:/Users/Eduardo/Desktop/MC2/Grafo/grafo.txt";
+            cmd[3] = "-o";
+            cmd[4] = "C:/Users/Eduardo/Desktop/MC2/Grafo/grafo.png";
+            Process child = Runtime.getRuntime().exec(cmd);
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    private String cadena2(){
+        String cadena2 = "";
+        cadena2 += "C:/Users/Eduardo/Desktop/MC2/Grafo\n";
+        cadena2 += "dot -Tpng grafo.txt -o grafo.png";
+        return cadena2;
+    }
+    private void Archivobat(){
+        try{
+            PrintWriter pw = new PrintWriter("C:/Users/Eduardo/Desktop/MC2/Grafo/plugin.bat");
+            pw.write(cadena2());
+            pw.close();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
 }
