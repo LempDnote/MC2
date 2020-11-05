@@ -12,7 +12,7 @@ package Elementos;
 public class TDAA {
     public int Grafo1;
     public int Grafo2;
-
+    private boolean estado = true;
     public TDAA(int Grafo1, int Grafo2) {
         this.Grafo1 = Grafo1;
         this.Grafo2 = Grafo2;
@@ -32,6 +32,14 @@ public class TDAA {
 
     public void setGrafo2(int Grafo2) {
         this.Grafo2 = Grafo2;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
     
     

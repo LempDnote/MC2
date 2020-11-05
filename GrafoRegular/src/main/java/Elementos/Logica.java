@@ -28,29 +28,42 @@ public class Logica {
     }
     private void Aristas(){
         Random rm = new Random();
-        int cAristas = this.vertices*this.aristas;
-        while(cAristas > 0){
-            int g1 = 1+rm.nextInt(this.vertices);
-            int g2 = 1+rm.nextInt(this.vertices);
-            int grado = this.lista.Grado();
-            while(this.lista.Prioridad(g1,grado) == false){
-                g1 = 1+rm.nextInt(this.vertices);
-            }
-            this.lista.Modificar(g1,"grado",-1);
-            int grado2 = this.lista.Grado();
-            while(this.lista.Prioridad(g2, grado2) == false){
-                g2 = 1+rm.nextInt(this.vertices);
-            }
-            this.lista.Modificar(g2, "grado",-1);
+        if(this.aristas > 1){
             
-            if(g1 != g2){
+            int cAristas = this.vertices*this.aristas;
+                while(cAristas > 0){
+                int g1 = 1+rm.nextInt(this.vertices);
+                int g2 = 1+rm.nextInt(this.vertices);
+                int grado = this.lista.Grado();
+                while(this.lista.Prioridad(g1,grado) == false){
+                g1 = 1+rm.nextInt(this.vertices);
+                }
+                this.lista.Modificar(g1,"grado",-1);
+                int grado2 = this.lista.Grado();
+                while(this.lista.Prioridad(g2, grado2) == false){
+                g2 = 1+rm.nextInt(this.vertices);
+                }
+                this.lista.Modificar(g2, "grado",-1);
+            
+                if(g1 != g2){
                 this.listaa.Ingresar(new TDAA(g1,g2));
                 cAristas--;
-            }else{
+                }else{
                 this.lista.Modificar(g1,"grado",+1);
                 this.lista.Modificar(g2,"grado",+1);
+                }
             }
-        }
+         }else if(this.aristas == 1){
+            int inicial = 1;
+            for (int i = 1; i <= this.vertices; i++) {
+                if(i == this.vertices){
+                    this.listaa.Ingresar(new TDAA(i,1));
+                }else{
+                    this.listaa.Ingresar(new TDAA(i,i+1));
+                }
+                
+            }
+         }
         Fichero();
         EjecutarDot();
 //        try{
@@ -96,13 +109,22 @@ public class Logica {
         cadena2 += "dot -Tpng grafo.txt -o grafo.png";
         return cadena2;
     }
-    private void Archivobat(){
-        try{
-            PrintWriter pw = new PrintWriter("C:/Users/Eduardo/Desktop/MC2/Grafo/plugin.bat");
-            pw.write(cadena2());
-            pw.close();
-        }catch(Exception e){
-            System.out.println(e);
-        }
+
+    public ListaA getListaa() {
+        return listaa;
     }
+
+    public void setListaa(ListaA listaa) {
+        this.listaa = listaa;
+    }
+
+    public Lista getLista() {
+        return lista;
+    }
+
+    public void setLista(Lista lista) {
+        this.lista = lista;
+    }
+    
+   
 }

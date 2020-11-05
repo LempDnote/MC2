@@ -28,13 +28,13 @@ public class Principal extends javax.swing.JFrame {
     }
     
     private void verticesbox(){
-        for (int i = 1; i < 11; i++) {
+        for (int i = 3; i < 11; i++) {
             this.jComboBox1.addItem(Integer.toString(i));
         }
     }
     private void aristasbox(){
-        for (int i = 1; i < 9; i++) {
-            this.jComboBox2.addItem(Integer.toString(i));
+        for (int i = 1; i <= 4; i++) {
+            this.jComboBox2.addItem(Integer.toString(2*i));
         }
     }
    
@@ -127,7 +127,7 @@ public class Principal extends javax.swing.JFrame {
         Logica logica = new Logica(this.vertices,this.aristas);
         try{
             Thread.sleep(500);
-            Grafo gf = new Grafo();
+            Grafo gf = new Grafo(logica.getListaa());
             gf.setVisible(true);
             gf.setLocationRelativeTo(null);
         }catch(Exception e){

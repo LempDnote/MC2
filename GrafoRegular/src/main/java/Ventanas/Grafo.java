@@ -5,6 +5,8 @@
  */
 package Ventanas;
 
+import Elementos.ListaA;
+import Elementos.Solucion;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -14,18 +16,23 @@ import javax.swing.ImageIcon;
  * @author Eduardo
  */
 public class Grafo extends javax.swing.JFrame {
-
+    ListaA lista;
     /**
      * Creates new form Grafo
      */
-    public Grafo() {
+    public Grafo(ListaA lista) {
         initComponents();
         Iniciar();
+        this.lista = lista;
     }
     public void Iniciar(){
        ImageIcon imagen = new ImageIcon("C:/Users/Eduardo/Desktop/MC2/Grafo/grafo.png");
-       Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(this.jLabel1.getWidth(),this.jLabel1.getHeight(),Image.SCALE_AREA_AVERAGING));
+       Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(this.jLabel1.getWidth(),this.jLabel1.getHeight(),Image.SCALE_DEFAULT));
         this.jLabel1.setIcon(icono);
+    }
+    public void Soluciones(){
+        Solucion solucion = new Solucion(this.lista,this.jTextField1.getText());
+        
     }
     
     /**
@@ -60,6 +67,11 @@ public class Grafo extends javax.swing.JFrame {
         jButton1.setText("Resolver");
 
         jButton2.setText("Solucion");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Visualizar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -123,40 +135,13 @@ public class Grafo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Soluciones();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Grafo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Grafo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Grafo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Grafo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Grafo().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -29,11 +29,27 @@ public class ListaA {
             temporal.setSiguiente(nuevo);
         }
     }
-    public void Modificar(){
-        
+    public boolean Estado(){
+        NodoA aux = this.cabeza;
+        boolean estado = true;
+        while(aux != null){
+            if(aux.grafos.isEstado() == true){
+                System.out.println(aux.grafos.isEstado());
+                estado = false;
+            }
+            aux = aux.getSiguiente();
+        }
+        return estado;
     }
-    public void Buscar(){
-        
+    public void Buscar(int g1, int g2){
+        NodoA aux = this.cabeza;
+        while(aux != null){
+            if((aux.grafos.Grafo1 == g1 && aux.grafos.Grafo2 == g2) || (aux.grafos.Grafo1 == g2 &&
+                    aux.grafos.Grafo2 == g1)){
+                aux.grafos.setEstado(false);
+            }
+            aux = aux.getSiguiente();
+        }
     }
     public String Cadena(){
         String cadena = "";
