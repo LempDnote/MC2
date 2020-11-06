@@ -32,7 +32,7 @@ public class Grafo extends javax.swing.JFrame {
     }
     public void Soluciones(){
         Solucion solucion = new Solucion(this.lista,this.jTextField1.getText());
-        
+        solucion.Cadena();
     }
     
     /**
@@ -65,6 +65,11 @@ public class Grafo extends javax.swing.JFrame {
         );
 
         jButton1.setText("Resolver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Solucion");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +142,14 @@ public class Grafo extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Soluciones();
+        lista.Limpiar();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Solucion solucion = new Solucion(this.lista,this.jTextField1.getText());
+        this.jTextField1.setText(solucion.BuscarSolucion());
+        lista.Limpiar();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
